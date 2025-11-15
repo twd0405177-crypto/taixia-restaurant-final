@@ -42,6 +42,8 @@
         @media (max-width: 768px) {
             #mobile-menu a {
                 padding: 1rem;
+                /* 確保手機選單連結是區塊元素 */
+                display: block; 
                 border-top: 1px solid rgba(255, 255, 255, 0.1);
             }
         }
@@ -53,9 +55,10 @@
         <div class="container mx-auto flex justify-between items-center p-4">
             <a href="#" class="text-2xl font-bold text-brand-secondary">泰蝦小棧</a>
 
-            <button id="menu-button" class="md:hidden text-brand-secondary text-2xl" onclick="toggleMenu()">☰</button>
+            <button id="menu-button" class="md:hidden text-brand-secondary text-2xl border border-brand-secondary p-1 rounded hover:bg-white hover:text-brand-primary transition duration-300" onclick="toggleMenu()">☰</button>
 
-            <nav id="mobile-menu" class="hidden md:flex flex-col md:flex-row space-x-0 md:space-x-6 absolute md:relative top-full left-0 w-full md:w-auto bg-brand-primary md:bg-transparent shadow-md md:shadow-none p-4 md:p-0">
+            <nav id="mobile-menu" class="hidden md:flex flex-col md:flex-row space-x-0 md:space-x-6 absolute md:relative top-full left-0 w-full md:w-auto bg-brand-primary md:bg-transparent shadow-md md:shadow-none z-20">
+                
                 <a href="menu.pdf" target="_blank" class="text-brand-secondary hover:text-white transition duration-300 block">菜單</a>
                 <a href="#features" class="text-brand-secondary hover:text-white transition duration-300 block">今日限定</a>
                 <a href="tel:0983121311" class="px-4 py-2 bg-brand-secondary text-brand-primary rounded-full font-bold hover:bg-white transition duration-300 block mt-2 md:mt-0">立即訂位</a>
@@ -142,13 +145,13 @@
             if (menu.classList.contains('hidden')) {
                 // 如果是隱藏，則移除 'hidden' 讓它顯示
                 menu.classList.remove('hidden');
-                // 並將選單調整為垂直排版，覆蓋整個寬度
-                menu.classList.add('flex', 'flex-col');
+                // 並將選單調整為垂直排版
+                menu.classList.add('flex', 'flex-col', 'p-4');
             } else {
                 // 如果是顯示，則加入 'hidden' 讓它隱藏
                 menu.classList.add('hidden');
                 // 移除 flex 相關排版
-                menu.classList.remove('flex', 'flex-col');
+                menu.classList.remove('flex', 'flex-col', 'p-4');
             }
         }
     </script>
