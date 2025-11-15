@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>泰蝦小棧 | 霸氣現撈，台式熱炒</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 品牌顏色變數和自定義樣式 */
+        :root {
+            --color-brand-primary: #800000;
+            /* Logo 暗紅色/酒紅色 */
+            --color-brand-secondary: #F5F5DC;
+            /* Logo 淺灰褐/米白色 */
+            --color-text-dark: #333333;
+            /* 深灰色文字 */
+        }
+
+        /* 讓 Tailwind 識別自定義顏色 */
+        .bg-brand-primary {
+            background-color: var(--color-brand-primary);
+        }
+
+        .text-brand-primary {
+            color: var(--color-brand-primary);
+        }
+
+        .border-brand-primary {
+            border-color: var(--color-brand-primary);
+        }
+
+        .bg-brand-secondary {
+            background-color: var(--color-brand-secondary);
+        }
+
+        .text-brand-secondary {
+            color: var(--color-brand-secondary);
+        }
+
+        /* 確保手機選單在展開時能覆蓋內容 */
+        @media (max-width: 768px) {
+            #mobile-menu a {
+                padding: 1rem;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-brand-secondary text-gray-800 font-sans">
+    <header class="bg-brand-primary shadow-lg sticky top-0 z-10">
+        <div class="container mx-auto flex justify-between items-center p-4">
+            <a href="#" class="text-2xl font-bold text-brand-secondary">泰蝦小棧</a>
+
+            <button id="menu-button" class="md:hidden text-brand-secondary text-2xl" onclick="toggleMenu()">☰</button>
+
+            <nav id="mobile-menu" class="hidden md:flex flex-col md:flex-row space-x-0 md:space-x-6 absolute md:relative top-full left-0 w-full md:w-auto bg-brand-primary md:bg-transparent shadow-md md:shadow-none p-4 md:p-0">
+                <a href="menu.pdf" target="_blank" class="text-brand-secondary hover:text-white transition duration-300 block">菜單</a>
+                <a href="#features" class="text-brand-secondary hover:text-white transition duration-300 block">今日限定</a>
+                <a href="tel:0983121311" class="px-4 py-2 bg-brand-secondary text-brand-primary rounded-full font-bold hover:bg-white transition duration-300 block mt-2 md:mt-0">立即訂位</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero bg-cover bg-center h-[55vh] flex items-center justify-center relative" style="background-image: url('shrimp_hero.jpg');">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+
+        <div class="text-center z-10 p-6">
+            <h1 class="text-5xl md:text-9xl font-extrabold text-brand-secondary mb-4 drop-shadow-lg">
+                泰蝦小棧：霸氣現撈，鮮到拍手！
+            </h1>
+            <p class="text-2xl text-brand-secondary mb-4 drop-shadow-lg">台式熱炒的豪邁，泰國蝦的極致鮮甜。</p>
+            
+            <a href="tel:0983121311" class="px-10 py-4 bg-brand-primary text-white text-2xl font-bold rounded-lg shadow-xl hover:bg-[#CC3700] transition duration-300 transform hover:scale-105">
+                立即訂位
+            </a>
+            
+            <p class="text-xs text-brand-secondary mt-3 opacity-80">
+                (手機點擊自動撥號，電腦請抄寫電話：0983-121311)
+            </p>
+        </div>
+    </section>
+
+    <section id="features" class="container mx-auto py-16 px-4">
+        <h2 class="text-4xl font-bold text-center mb-12 text-brand-primary border-b-4 border-brand-primary pb-2">
+            泰蝦小棧，就是尚青！
+        </h2>
+        
+        <div class="grid md:grid-cols-5 gap-6 items-start">
+            
+            <div class="md:col-span-2"> 
+                <p class="text-xl leading-relaxed mb-6">
+                    我們只選用<strong class="text-brand-primary">最新鮮的泰國蝦</strong>和最道地的<strong class="text-brand-primary">台式熱炒手法</strong>，讓您吃得盡興！
+                </p>
+                <ul class="space-y-3 text-lg">
+                    <li>🦐 當日現撈活蝦，肉質彈牙飽滿。</li>
+                    <li>🔥 新鮮美味，霸氣十足的台式美味。</li>
+                    <li>🍻 適合好友家人聚餐，大口吃肉大口喝酒。</li>
+                </ul>
+            </div>
+            
+            <div class="md:col-span-3 grid grid-cols-4 gap-4">
+                
+                <div class="rounded-lg shadow-xl overflow-hidden flex items-center justify-center bg-white p-2 aspect-square">
+                    <img src="taixia_logo.png" alt="泰蝦小棧 Logo" class="w-full h-auto object-contain">
+                </div>
+                
+                <div class="rounded-lg shadow-xl overflow-hidden aspect-square">
+                    <img src="shrimp_feature.jpg" alt="特色菜圖片" class="w-full h-full object-cover">
+                </div>
+                
+                <div class="rounded-lg shadow-xl overflow-hidden aspect-square">
+                    <img src="shrimp_side1.jpg" alt="新增圖片1" class="w-full h-full object-cover">
+                </div>
+                
+                <div class="rounded-lg shadow-xl overflow-hidden aspect-square">
+                    <img src="shrimp_side2.jpg" alt="新增圖片2" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="bg-brand-primary text-brand-secondary py-12">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-6">聯絡與營業資訊</h2>
+            <p class="text-2xl font-extrabold mb-2">
+                訂位專線：<a href="tel:0983121311" class="hover:text-white transition duration-300">0983-121311</a>
+            </p>
+            <p class="text-lg">地址：新竹市東區東山街56號</p>
+            <p class="text-lg mt-2">
+                營業時間：16:30 - 01:00 (售完為止)<br>
+                <em class="text-sm opacity-80">小提醒：顛峰時用餐時間為90分鐘，無其他顧客候位時皆不限時。</em>
+            </p>
+        </div>
+    </section>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('mobile-menu');
+            // 檢查選單是否包含 'hidden' 類別 (隱藏狀態)
+            if (menu.classList.contains('hidden')) {
+                // 如果是隱藏，則移除 'hidden' 讓它顯示
+                menu.classList.remove('hidden');
+                // 並將選單調整為垂直排版，覆蓋整個寬度
+                menu.classList.add('flex', 'flex-col');
+            } else {
+                // 如果是顯示，則加入 'hidden' 讓它隱藏
+                menu.classList.add('hidden');
+                // 移除 flex 相關排版
+                menu.classList.remove('flex', 'flex-col');
+            }
+        }
+    </script>
+</body>
+
+</html>
