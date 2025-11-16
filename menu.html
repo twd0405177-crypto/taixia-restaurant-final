@@ -42,8 +42,8 @@
 
         /* 圖片容器：極致縮減白邊 */
         .image-wrapper {
-            background-color: white; /* 模擬紙張底色 */
-            padding: 2px; /* 紙張邊緣厚度 - 極簡白邊 */
+            background-color: white; 
+            padding: 2px; 
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
             position: relative;
             display: flex; 
@@ -93,21 +93,21 @@
             transform: scale(1.05); 
         }
         
-        /* 手機 RWD 優化：縮小文字面積，避免遮擋圖片主體 */
+        /* 最終優化：縮小手機上的文字面積 */
         .menu-caption {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 0.5rem; /* 縮小內距 */
-            background-color: rgba(0, 0, 0, 0.75); /* 加深背景色，增加對比度 */
+            padding: 0.4rem 0.2rem; /* 縮小內距 */
+            background-color: rgba(0, 0, 0, 0.75); 
             color: white;
             text-align: center;
-            font-size: 1rem; /* 手機使用 1rem (基礎大小) */
+            font-size: 0.875rem; /* 手機上使用 0.875rem (text-sm) */
             font-weight: bold;
         }
-        
-        /* 確保在桌面版 (md: 768px 以上) 仍然使用大字體和足夠的內距 */
+
+        /* 確保在桌面版 (md: 768px 以上) 仍然使用大字體 */
         @media (min-width: 768px) {
             .menu-caption {
                 font-size: 1.25rem;
