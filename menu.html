@@ -4,94 +4,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>泰蝦小棧 | 活潑化菜單</title>
+    <title>泰蝦小棧 | 菜單</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* 品牌顏色變數和自定義樣式 (與 index.html 保持一致) */
         :root {
             --color-brand-primary: #800000;
-            /* Logo 暗紅色/酒紅色 */
             --color-brand-secondary: #F5F5DC;
-            /* Logo 淺灰褐/米白色 */
         }
 
-        .bg-brand-primary {
-            background-color: var(--color-brand-primary);
-        }
-
-        .text-brand-primary {
-            color: var(--color-brand-primary);
-        }
-
-        .bg-brand-secondary {
-            background-color: var(--color-brand-secondary);
-        }
+        .bg-brand-primary { background-color: var(--color-brand-primary); }
+        .text-brand-primary { color: var(--color-brand-primary); }
+        .bg-brand-secondary { background-color: var(--color-brand-secondary); }
 
         /* ------------------------------------------- */
-        /* 1. 風格化封面區 (根據您的黑板圖設計) */
+        /* 1. 風格化封面區 (黑板背景與圖片) */
         /* ------------------------------------------- */
         .cover-section {
-            background-image: url('blackboard_bg.jpg');
+            background-image: url('blackboard_bg.jpg'); 
             background-size: cover;
             background-position: center;
             padding: 3rem 0 0;
             color: white;
-            min-height: 80vh;
+            min-height: 80vh; 
+            position: relative;
         }
 
-        /* 圖片容器：用於圖片放大與不裁切 */
+        /* 圖片容器：極致縮減白邊 */
         .image-wrapper {
-            background-color: white; /* 模擬紙張底色 */
-            padding: 10px; /* 紙張邊緣厚度 */
+            background-color: white; 
+            padding: 2px; 
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
             position: relative;
-            display: flex; /* 讓圖片在內部居中 */
+            display: flex; 
             justify-content: center;
             align-items: center;
-            overflow: hidden; /* 防止圖片溢出容器 */
+            overflow: hidden; 
             width: 100%;
-            max-width: 350px; /* 控制最大尺寸 */
-            height: 250px; /* 固定高度，可調整 */
+            max-width: 380px; 
+            height: 250px; 
+            margin: 0 auto; 
         }
 
         /* 圖片本身：確保完整顯示不裁切 */
         .image-wrapper img {
-            width: auto;
-            height: 100%; /* 讓高度填滿容器 */
-            max-width: 100%; /* 限制寬度在容器內 */
-            object-fit: contain; /* 確保圖片完整顯示，不裁切 */
-        }
-
-        /* 撕紙效果的形狀定義 */
-        .torn-edge {
-            clip-path: polygon(
-                0% 2%, 8% 0%, 15% 3%, 22% 1%, 30% 4%, 38% 0%, 45% 2%, 52% 0%, 60% 3%, 68% 1%, 75% 4%, 82% 0%, 90% 3%, 97% 1%, 100% 5%,
-                100% 98%, 92% 100%, 85% 97%, 78% 99%, 70% 96%, 62% 100%, 55% 98%, 48% 100%, 40% 97%, 32% 99%, 25% 96%, 18% 100%, 10% 97%, 3% 99%, 0% 95%
-            );
-            /* 針對不同圖片調整旋轉和位置 */
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: white; /* 模擬紙張顏色 */
-            z-index: 1; /* 確保在圖片上面 */
-        }
-        .torn-edge img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* 確保圖片在這個形狀內完整顯示 */
+            object-fit: contain; 
             position: relative;
-            z-index: 2; /* 圖片在撕紙背景上面 */
-        }
-
-        /* 調整圖片容器的尺寸 */
-        @media (min-width: 768px) {
-            .image-wrapper {
-                height: 300px; /* 桌面版圖片高度 */
-            }
-            .landscape-wrapper {
-                width: 400px; /* 橫向圖片的寬度 */
-                height: 300px; /* 橫向圖片的高度 */
-                max-width: 100%;
-            }
+            z-index: 2;
         }
         
         /* 旋轉微調，增加不規則感 */
@@ -99,8 +60,15 @@
         .rotate-pos-3 { transform: rotate(3deg); }
         .rotate-pos-7 { transform: rotate(7deg); }
         
+        /* 橫向圖片容器的調整 */
+        .landscape-wrapper {
+            max-width: 450px; 
+            height: 300px; 
+            aspect-ratio: 4/3; 
+        }
+
         /* ------------------------------------------- */
-        /* 2. 網格列表區 (保持不變或微調) */
+        /* 2. 網格列表區 (九宮格樣式) */
         /* ------------------------------------------- */
         .menu-grid-item {
             aspect-ratio: 1 / 1; 
@@ -139,6 +107,106 @@
     </header>
 
     <section class="cover-section py-12 md:py-20 border-b-8 border-brand-primary flex flex-col justify-center items-center">
-        <div class="container mx-auto px-4">
+        <div class="container mx-auto px-4 relative">
             
-            <p class="text-5xl md:text-7xl font-extrabold text-yellow-300 text-center drop-shadow-lg
+            <div class="relative text-center mb-[-50px] z-10">
+                <img src="taixia_logo_cover.png" alt="泰蝦小棧 Logo" class="w-32 md:w-40 h-auto object-contain drop-shadow-2xl mx-auto">
+            </div>
+            
+            <div class="relative text-center mb-8 flex flex-col items-center">
+                <p class="text-5xl md:text-7xl font-extrabold text-yellow-300 drop-shadow-lg [font-family:cursive]">New Menu</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-4 mt-10 items-center justify-center">
+                
+                <div class="flex flex-col items-center">
+                    <div class="image-wrapper rotate-neg-5">
+                        <img src="condensed_milk_ziba.jpg" alt="煉乳滋粑">
+                    </div>
+                    <p class="text-2xl font-bold mt-4 text-white drop-shadow">煉乳滋粑</p>
+                </div>
+                
+                <div class="flex flex-col items-center mt-12 md:mt-0 relative">
+                    <div class="image-wrapper landscape-wrapper rotate-pos-3">
+                        <img src="penghu_oysters.jpg" alt="澎湖鮮蚵">
+                    </div>
+                    <p class="text-2xl font-bold mt-4 text-white drop-shadow">澎湖鮮蚵</p>
+                </div>
+                
+                <div class="flex flex-col items-center">
+                    <div class="image-wrapper rotate-pos-7">
+                        <img src="sour_spicy_shrimp_2.jpg" alt="酸辣蝦">
+                    </div>
+                    <p class="text-2xl font-bold mt-4 text-white drop-shadow">酸辣蝦</p>
+                </div>
+            </div>
+            
+            <p class="text-5xl md:text-7xl font-extrabold text-yellow-300 text-center mt-10 drop-shadow-lg [font-family:cursive]">Yummy!</p>
+            <p class="text-lg text-center mt-4 text-white drop-shadow">新竹市東區東山街56號</p>
+        </div>
+    </section>
+
+    <main class="container mx-auto px-4 py-12">
+        
+        <h2 class="text-4xl font-extrabold text-brand-primary text-center mb-8">精選菜色 (點擊查看價格)</h2>
+        
+        <div class="bg-red-100 text-red-800 p-4 rounded-lg mb-8 text-center border border-brand-primary">
+            <p class="font-bold">✨ 貼心小提醒 ✨</p>
+            <p class="text-sm mt-1">所有圖片均為實體拍攝，點擊圖片可直接訂位諮詢！</p>
+        </div>
+
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            
+            <a href="tel:0983121311" class="menu-grid-item rounded-lg shadow-xl">
+                <img src="salt_baked_fish.jpg" alt="鹽烤活魚" class="w-full h-full object-cover">
+                <div class="menu-caption">鹽烤活魚 ($400)</div>
+            </a>
+
+            <a href="tel:0983121311" class="menu-grid-item rounded-lg shadow-xl">
+                <img src="golden_sand_tofu.jpg" alt="金沙豆腐" class="w-full h-full object-cover">
+                <div class="menu-caption">金沙豆腐 ($150)</div>
+            </a>
+
+            <a href="tel:0983121311" class="menu-grid-item rounded-lg shadow-xl">
+                <img src="pepper_snail.jpg" alt="胡椒鳳螺" class="w-full h-full object-cover">
+                <div class="menu-caption">胡椒鳳螺 ($380)</div>
+            </a>
+            
+            <a href="tel:0983121311" class="menu-grid-item rounded-lg shadow-xl">
+                <img src="loofah_clam.jpg" alt="絲瓜蛤蠣" class="w-full h-full object-cover">
+                <div class="menu-caption">絲瓜蛤蠣 ($200)</div>
+            </a>
+
+            <a href="tel:0983121311" class="menu-grid-item rounded-lg shadow-xl">
+                <img src="moon_shrimp_cake.jpg" alt="月亮蝦餅" class="w-full h-full object-cover">
+                <div class="menu-caption">月亮蝦餅 ($200)</div>
+            </a>
+
+            <a href="tel:0983121311" class="menu-grid-item rounded-lg shadow-xl">
+                <img src="lemon_shrimp.jpg" alt="檸檬蝦" class="w-full h-full object-cover">
+                <div class="menu-caption">檸檬蝦 ($530)</div>
+            </a>
+
+            <a href="tel:0983121311" class="menu-grid-item rounded-lg shadow-xl">
+                <img src="mushroom_chicken_soup.jpg" alt="香菇雞湯" class="w-full h-full object-cover">
+                <div class="menu-caption">香菇雞湯 ($550)</div>
+            </a>
+
+            <a href="tel:0983121311" class="menu-grid-item rounded-lg shadow-xl">
+                <img src="golden_sand_tofu.jpg" alt="金沙豆腐" class="w-full h-full object-cover">
+                <div class="menu-caption">金沙豆腐 ($150)</div>
+            </a>
+
+            <p class="text-xl font-bold text-gray-700 mt-8 md:col-span-4 text-center">--- 更多菜單請洽服務人員或電話詢問 ---</p>
+        </div>
+
+    </main>
+
+    <footer class="bg-brand-primary text-brand-secondary py-6 text-center mt-10">
+        <p class="text-lg">訂位專線：<a href="tel:0983121311" class="font-bold hover:text-white transition duration-300">0983-121311</a></p>
+        <p class="text-sm mt-1">返回 <a href="index.html" class="underline hover:text-white">泰蝦小棧首頁</a></p>
+    </footer>
+
+</body>
+</html>
