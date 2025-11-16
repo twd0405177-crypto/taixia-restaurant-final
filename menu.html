@@ -10,15 +10,25 @@
         /* 品牌顏色變數和自定義樣式 (與 index.html 保持一致) */
         :root {
             --color-brand-primary: #800000;
+            /* Logo 暗紅色/酒紅色 */
             --color-brand-secondary: #F5F5DC;
+            /* Logo 淺灰褐/米白色 */
         }
 
-        .bg-brand-primary { background-color: var(--color-brand-primary); }
-        .text-brand-primary { color: var(--color-brand-primary); }
-        .bg-brand-secondary { background-color: var(--color-brand-secondary); }
+        .bg-brand-primary {
+            background-color: var(--color-brand-primary);
+        }
+
+        .text-brand-primary {
+            color: var(--color-brand-primary);
+        }
+
+        .bg-brand-secondary {
+            background-color: var(--color-brand-secondary);
+        }
 
         /* ------------------------------------------- */
-        /* 1. 風格化封面區 (黑板背景與圖片) */
+        /* 1. 風格化封面區 */
         /* ------------------------------------------- */
         .cover-section {
             background-image: url('blackboard_bg.jpg'); 
@@ -32,8 +42,8 @@
 
         /* 圖片容器：極致縮減白邊 */
         .image-wrapper {
-            background-color: white; 
-            padding: 2px; 
+            background-color: white; /* 模擬紙張底色 */
+            padding: 2px; /* 紙張邊緣厚度 - 極簡白邊 */
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
             position: relative;
             display: flex; 
@@ -82,17 +92,27 @@
         .menu-grid-item:hover img {
             transform: scale(1.05); 
         }
+        
+        /* 手機 RWD 優化：縮小文字面積，避免遮擋圖片主體 */
         .menu-caption {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 0.75rem;
-            background-color: rgba(0, 0, 0, 0.65); 
+            padding: 0.5rem; /* 縮小內距 */
+            background-color: rgba(0, 0, 0, 0.75); /* 加深背景色，增加對比度 */
             color: white;
             text-align: center;
-            font-size: 1.25rem; 
+            font-size: 1rem; /* 手機使用 1rem (基礎大小) */
             font-weight: bold;
+        }
+        
+        /* 確保在桌面版 (md: 768px 以上) 仍然使用大字體和足夠的內距 */
+        @media (min-width: 768px) {
+            .menu-caption {
+                font-size: 1.25rem;
+                padding: 0.75rem;
+            }
         }
     </style>
 </head>
@@ -156,7 +176,7 @@
         </div>
 
         
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
             
             <a href="tel:0983121311" class="menu-grid-item rounded-lg shadow-xl">
                 <img src="salt_baked_fish.jpg" alt="鹽烤活魚" class="w-full h-full object-cover">
@@ -179,11 +199,6 @@
             </a>
 
             <a href="tel:0983121311" class="menu-grid-item rounded-lg shadow-xl">
-                <img src="moon_shrimp_cake.jpg" alt="月亮蝦餅" class="w-full h-full object-cover">
-                <div class="menu-caption">月亮蝦餅 ($200)</div>
-            </a>
-
-            <a href="tel:0983121311" class="menu-grid-item rounded-lg shadow-xl">
                 <img src="lemon_shrimp.jpg" alt="檸檬蝦" class="w-full h-full object-cover">
                 <div class="menu-caption">檸檬蝦 ($530)</div>
             </a>
@@ -194,11 +209,21 @@
             </a>
 
             <a href="tel:0983121311" class="menu-grid-item rounded-lg shadow-xl">
-                <img src="golden_sand_tofu.jpg" alt="金沙豆腐" class="w-full h-full object-cover">
-                <div class="menu-caption">金沙豆腐 ($150)</div>
+                <img src="moon_shrimp_cake.jpg" alt="月亮蝦餅" class="w-full h-full object-cover">
+                <div class="menu-caption">月亮蝦餅 ($200)</div>
             </a>
 
-            <p class="text-xl font-bold text-gray-700 mt-8 md:col-span-4 text-center">--- 更多菜單請洽服務人員或電話詢問 ---</p>
+            <a href="tel:0983121311" class="menu-grid-item rounded-lg shadow-xl">
+                <img src="salted_pork.jpg" alt="鹹豬肉" class="w-full h-full object-cover">
+                <div class="menu-caption">鹹豬肉 ($250)</div>
+            </a>
+
+            <a href="tel:0983121311" class="menu-grid-item rounded-lg shadow-xl">
+                <img src="basil_omelet.jpg" alt="九層塔蛋" class="w-full h-full object-cover">
+                <div class="menu-caption">九層塔蛋 ($150)</div>
+            </a>
+
+            <p class="text-xl font-bold text-gray-700 mt-8 md:col-span-3 text-center">--- 更多菜單請洽服務人員或電話詢問 ---</p>
         </div>
 
     </main>
