@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>泰蝦小棧 | 活潑化菜單</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 品牌顏色變數和自定義樣式 (與 index.html 保持一致) */
+        :root {
+            --color-brand-primary: #800000;
+            /* Logo 暗紅色/酒紅色 */
+            --color-brand-secondary: #F5F5DC;
+            /* Logo 淺灰褐/米白色 */
+        }
+
+        .bg-brand-primary {
+            background-color: var(--color-brand-primary);
+        }
+
+        .text-brand-primary {
+            color: var(--color-brand-primary);
+        }
+
+        .bg-brand-secondary {
+            background-color: var(--color-brand-secondary);
+        }
+
+        /* ------------------------------------------- */
+        /* 1. 風格化封面區 (根據您的黑板圖設計) */
+        /* ------------------------------------------- */
+        .cover-section {
+            background-image: url('blackboard_bg.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 3rem 0 0;
+            color: white;
+            min-height: 80vh;
+        }
+
+        /* 圖片容器：用於圖片放大與不裁切 */
+        .image-wrapper {
+            background-color: white; /* 模擬紙張底色 */
+            padding: 10px; /* 紙張邊緣厚度 */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            position: relative;
+            display: flex; /* 讓圖片在內部居中 */
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* 防止圖片溢出容器 */
+            width: 100%;
+            max-width: 350px; /* 控制最大尺寸 */
+            height: 250px; /* 固定高度，可調整 */
+        }
+
+        /* 圖片本身：確保完整顯示不裁切 */
+        .image-wrapper img {
+            width: auto;
+            height: 100%; /* 讓高度填滿容器 */
+            max-width: 100%; /* 限制寬度在容器內 */
+            object-fit: contain; /* 確保圖片完整顯示，不裁切 */
+        }
+
+        /* 撕紙效果的形狀定義 */
+        .torn-edge {
+            clip-path: polygon(
+                0% 2%, 8% 0%, 15% 3%, 22% 1%, 30% 4%, 38% 0%, 45% 2%, 52% 0%, 60% 3%, 68% 1%, 75% 4%, 82% 0%, 90% 3%, 97% 1%, 100% 5%,
+                100% 98%, 92% 100%, 85% 97%, 78% 99%, 70% 96%, 62% 100%, 55% 98%, 48% 100%, 40% 97%, 32% 99%, 25% 96%, 18% 100%, 10% 97%, 3% 99%, 0% 95%
+            );
+            /* 針對不同圖片調整旋轉和位置 */
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: white; /* 模擬紙張顏色 */
+            z-index: 1; /* 確保在圖片上面 */
+        }
+        .torn-edge img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* 確保圖片在這個形狀內完整顯示 */
+            position: relative;
+            z-index: 2; /* 圖片在撕紙背景上面 */
+        }
+
+        /* 調整圖片容器的尺寸 */
+        @media (min-width: 768px) {
+            .image-wrapper {
+                height: 300px; /* 桌面版圖片高度 */
+            }
+            .landscape-wrapper {
+                width: 400px; /* 橫向圖片的寬度 */
+                height: 300px; /* 橫向圖片的高度 */
+                max-width: 100%;
+            }
+        }
+        
+        /* 旋轉微調，增加不規則感 */
+        .rotate-neg-5 { transform: rotate(-5deg); }
+        .rotate-pos-3 { transform: rotate(3deg); }
+        .rotate-pos-7 { transform: rotate(7deg); }
+        
+        /* ------------------------------------------- */
+        /* 2. 網格列表區 (保持不變或微調) */
+        /* ------------------------------------------- */
+        .menu-grid-item {
+            aspect-ratio: 1 / 1; 
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.5rem;
+        }
+        .menu-grid-item img {
+            transition: transform 0.3s ease;
+        }
+        .menu-grid-item:hover img {
+            transform: scale(1.05); 
+        }
+        .menu-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 0.75rem;
+            background-color: rgba(0, 0, 0, 0.65); 
+            color: white;
+            text-align: center;
+            font-size: 1.25rem; 
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body class="bg-brand-secondary text-gray-800 font-sans">
+    
+    <header class="bg-brand-primary text-brand-secondary py-3 shadow-lg sticky top-0 z-10">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold">泰蝦小棧 🦐 菜單</h1>
+            <a href="index.html" class="px-3 py-1 bg-brand-secondary text-brand-primary rounded-full hover:bg-white transition duration-300">回首頁</a>
+        </div>
+    </header>
+
+    <section class="cover-section py-12 md:py-20 border-b-8 border-brand-primary flex flex-col justify-center items-center">
+        <div class="container mx-auto px-4">
+            
+            <p class="text-5xl md:text-7xl font-extrabold text-yellow-300 text-center drop-shadow-lg
